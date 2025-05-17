@@ -2,17 +2,19 @@ package main
 
 import (
 	"fmt"
+	"image/color"
 	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
 
 type calculator struct {
 	window    fyne.Window
-	display   *widget.Entry
+	display   *canvas.Text
 	equation  string
 	operation string
 	firstNum  float64
@@ -21,10 +23,9 @@ type calculator struct {
 func newCalculator() *calculator {
 	calc := &calculator{}
 	calc.window = app.New().NewWindow("Calculator")
-	calc.display = widget.NewEntry()
-	calc.display.Disable()
+	calc.display = canvas.NewText("", color.NRGBA{R: 0, G: 255, B: 255, A: 255})
 	calc.display.TextStyle = fyne.TextStyle{Monospace: true}
-
+	calc.display.Alignment = fyne.TextAlignTrailing
 	return calc
 }
 
@@ -38,7 +39,8 @@ func (c *calculator) numberPressed(num string) {
 		c.operation = ""
 	}
 	c.equation += num
-	c.display.SetText(c.equation)
+	c.display.Text = c.equation
+	c.display.Refresh()
 }
 
 func (c *calculator) operationPressed(op string) {
@@ -73,14 +75,16 @@ func (c *calculator) calculate() {
 		result = c.firstNum * secondNum
 	case "÷":
 		if secondNum == 0 {
-			c.display.SetText("Error: Division by zero")
+			c.display.Text = "Error: Division by zero"
+			c.display.Refresh()
 			return
 		}
 		result = c.firstNum / secondNum
 	}
 
 	c.equation = fmt.Sprintf("%g", result)
-	c.display.SetText(c.equation)
+	c.display.Text = c.equation
+	c.display.Refresh()
 	c.operation = "="
 }
 
@@ -88,7 +92,8 @@ func (c *calculator) clear() {
 	c.equation = ""
 	c.operation = ""
 	c.firstNum = 0
-	c.display.SetText("")
+	c.display.Text = ""
+	c.display.Refresh()
 }
 
 func (c *calculator) loadUI() {
@@ -134,7 +139,7 @@ func (c *calculator) loadUI() {
 
 	// Create main container
 	content := container.NewVBox(
-		c.display,
+		container.NewPadded(c.display),
 		clearButton,
 		grid,
 	)
