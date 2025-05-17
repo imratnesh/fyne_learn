@@ -1,7 +1,8 @@
 # Todo App with Fyne
 
-![Screenshot](crud_todo_app/ui/screenshot1.png)
-![Screenshot](crud_todo_app/ui/screenshot2.png)
+![Todo App Screenshot 1](crud_todo_app/ui/screenshot1.png)
+![Todo App Screenshot 2](crud_todo_app/ui/screenshot2.png)
+
 A modern Todo application built with Go and Fyne framework, featuring user authentication and task management with priority levels.
 
 ## Features
@@ -20,6 +21,28 @@ A modern Todo application built with Go and Fyne framework, featuring user authe
   - For Linux: gcc and X11 development files
   - For Windows: gcc (MinGW)
 
+## Installing Fyne and Dependencies
+
+1. **Install Go:**
+   - Download and install Go from [https://golang.org/dl/](https://golang.org/dl/)
+
+2. **Install Fyne:**
+   ```bash
+   go install fyne.io/fyne/v2/cmd/fyne@latest
+   ```
+
+3. **Install platform dependencies:**
+   - **macOS:**
+     ```bash
+     xcode-select --install
+     ```
+   - **Linux (Debian/Ubuntu):**
+     ```bash
+     sudo apt install gcc libgl1-mesa-dev xorg-dev
+     ```
+   - **Windows:**
+     - Install [MinGW](http://www.mingw.org/)
+
 ## Installation
 
 1. Clone the repository:
@@ -33,7 +56,7 @@ cd fyne_learn
 go mod download
 ```
 
-## Running the Application
+## Running the Todo Application
 
 To run the application:
 ```bash
@@ -44,6 +67,15 @@ go run main.go
 Default login credentials:
 - Username: ratnesh
 - Password: ratnesh
+
+## Running the Calculator
+
+![Calculator Screenshot](crud_todo_app/calculator.png)
+
+To run the calculator:
+```bash
+go run calculator.go
+```
 
 ## Project Structure
 
@@ -56,41 +88,8 @@ crud_todo_app/
 │   └── todo.go      # Todo list page
 ├── main.go          # Application entry point
 └── go.mod           # Go module file
-```
-
-## Git Commands Used
-
-1. Initialize git repository:
-```bash
-git init
-```
-
-2. Add files to git:
-```bash
-git add .
-```
-
-3. Create initial commit:
-```bash
-git commit -m "Initial commit"
-```
-
-4. Create GitHub repository and push code:
-```bash
-# Install GitHub CLI if not installed
-brew install gh
-
-# Login to GitHub
-gh auth login
-
-# Create repository and push code
-gh repo create fyne_learn --public --source=. --remote=origin --push
-```
-
-5. If you need to remove large files from git history:
-```bash
-git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch [large-file-path]' --prune-empty --tag-name-filter cat -- --all
-git push -f origin master
+calculator.go        # Calculator app
+crud_todo_app/calculator.png # Calculator screenshot
 ```
 
 ## Building for Different Platforms
