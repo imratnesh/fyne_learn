@@ -1,5 +1,7 @@
 # Todo App with Fyne
 
+![Screenshot](crud_todo_app/ui/screenshot1.png)
+![Screenshot](crud_todo_app/ui/screenshot2.png)
 A modern Todo application built with Go and Fyne framework, featuring user authentication and task management with priority levels.
 
 ## Features
@@ -97,12 +99,15 @@ To build the application for different platforms:
 
 ```bash
 # For macOS
+cd crud_todo_app
 go build -o todo-app
 
 # For Windows
+cd crud_todo_app
 GOOS=windows GOARCH=amd64 go build -o todo-app.exe
 
 # For Linux
+cd crud_todo_app
 GOOS=linux GOARCH=amd64 go build -o todo-app
 ```
 
