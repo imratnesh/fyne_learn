@@ -1,7 +1,7 @@
 # Todo App with Fyne
 
-![Todo App Screenshot 1](crud_todo_app/ui/screenshot1.png)
-![Todo App Screenshot 2](crud_todo_app/ui/screenshot2.png)
+![Todo App Screenshot 1](crud_todo_app/ui/Screenshot1.png)
+![Todo App Screenshot 2](crud_todo_app/ui/Screenshot2.png)
 
 A modern Todo application built with Go and Fyne framework, featuring user authentication and task management with priority levels.
 
@@ -30,18 +30,27 @@ A modern Todo application built with Go and Fyne framework, featuring user authe
    ```bash
    go install fyne.io/fyne/v2/cmd/fyne@latest
    ```
+   This command downloads and installs the Fyne toolkit CLI for your Go environment.
 
 3. **Install platform dependencies:**
    - **macOS:**
      ```bash
      xcode-select --install
      ```
+     This installs the Xcode Command Line Tools required for building GUI apps.
    - **Linux (Debian/Ubuntu):**
      ```bash
      sudo apt install gcc libgl1-mesa-dev xorg-dev
      ```
+     These packages provide the necessary C compiler and graphics libraries.
    - **Windows:**
-     - Install [MinGW](http://www.mingw.org/)
+     - Download and install [MinGW](http://www.mingw.org/) for C compiler support.
+
+4. **Download Go module dependencies for the project:**
+   ```bash
+   go mod download
+   ```
+   This will fetch all Go dependencies required by the project.
 
 ## Installation
 
